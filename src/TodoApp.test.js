@@ -1,8 +1,8 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import TodoApp from "./TodoApp";
 
-const testTodos =[{
+const testTodos = [{
   id: 1,
   title: "test1",
   description: "testing1",
@@ -19,16 +19,50 @@ const testTodos =[{
   title: "test3",
   description: "still testing....",
   priority: 3,
-}]
+}];
 
 describe("TodoApp component", function () {
   it("renders without crashing", function () {
-    render(<TodoApp />);
+    render(<TodoApp initialTodos={testTodos} />);
   });
 
-  it ("renders components that should be there", function(){
-    const {container} = render(<TodoApp initalTodos={testTodos}/>);
+  it("matches snapshot", function () {
+    const { container } = render(<TodoApp initialTodos={testTodos} />);
+    expect(container).toMatchSnapshot();
+  });
 
+  it("renders components that should be there", function () {
+    const { container } = render(<TodoApp initialTodos={testTodos} />);
     expect(container.querySelector(".NewTodoForm")).toBeInTheDocument();
-  })
+  });
+
+  it("should render properly with no toods", function () {
+    const { queryByText } = render(<TodoApp />);
+    expect(queryByText("You have no todos.")).toBeInTheDocument();
+    expect(queryByText("No todos yet!")).toBeInTheDocument();
+  });
+
+  it("adds a todo on form submit", function () {
+    const { getByLabelText, queryByText, container, queryAllByText } = render(<TodoApp />);
+
+    const titleInput = container.querySelector("#newTodo-title");
+    const descInput = container.querySelector("#newTodo-description");
+    const priorityInput = getByLabelText("Priority:");
+    const submitBtn = queryByText("Gø!");
+
+    fireEvent.change(titleInput, { target: { value: "testTitle" } });
+    fireEvent.change(descInput, { target: { value: "testDesc" } });
+    fireEvent.change(priorityInput, { target: { value: 2 } });
+    fireEvent.click(submitBtn);
+
+    expect(queryAllByText("testTitle")[0]).toBeInTheDocument();
+    expect(queryAllByText("testDesc")[0]).toBeInTheDocument();
+  });
+
+  it("deletes a todo on clicking delete button", function () {
+    const { container, queryByText } = render(<TodoApp initialTodos={testTodos} />);
+
+    fireEvent.click(container.querySelector(".EditableTodo-delBtn"));
+    expect(queryByText("test1")).not.toBeInTheDocument();
+  });
 });

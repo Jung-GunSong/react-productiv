@@ -21,9 +21,6 @@ function App() {
         </div>
       </header>
 
-
-
-
       <section className="container mt-4">
         <TodoApp initialTodos={[
           {
