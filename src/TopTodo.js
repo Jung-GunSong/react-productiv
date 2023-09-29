@@ -7,7 +7,7 @@ import Todo from "./Todo";
  * Props:
  * - todos
  *
- * TodoApp -> TopTodo
+ * TodoApp -> TopTodo -> Todo
  */
 
 function TopTodo({ todos }) {

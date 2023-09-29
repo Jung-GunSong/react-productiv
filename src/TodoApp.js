@@ -28,8 +28,9 @@ function TodoApp({ initialTodos }) {
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
     setTodos(todos => todos.map(todo =>
-      (todo.id === updatedTodo.id) ?
-        updatedTodo : todo));
+      (todo.id === updatedTodo.id)
+        ? updatedTodo
+        : todo));
   }
 
   /** delete a todo by id */
@@ -42,7 +43,8 @@ function TodoApp({ initialTodos }) {
       <div className="row">
 
         <div className="col-md-6">
-          {todos.length > 0 ?
+          {todos.length > 0
+            ?
             <EditableTodoList
               todos={todos}
               update={update}
@@ -54,8 +56,9 @@ function TodoApp({ initialTodos }) {
         <div className="col-md-6">
           <section className="mb-4">
             <h3>Top Todo</h3>
-            {todos.length > 0 ? <TopTodo todos={todos} /> :
-              <span className="text-muted">No todos yet!</span>}
+            {todos.length > 0
+              ? <TopTodo todos={todos} />
+              : <span className="text-muted">No todos yet!</span>}
           </section>
 
           <section>
