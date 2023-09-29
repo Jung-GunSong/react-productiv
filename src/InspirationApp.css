@@ -1,0 +1,16 @@
+.InspirationApp {
+  text-align: right;
+}
+
+.InspirationApp-button {
+  background-color: rgb(129, 96, 11);
+  color: white;
+  padding: 5px;
+  margin: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.InspirationApp-button:hover {
+  background-color: rgb(88, 65, 7);
+}
