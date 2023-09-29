@@ -16,7 +16,4 @@ describe("productiv app", function () {
     const result = render(<App />);
     expect(result.queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
   });
-
-  // it ("")
 });
-

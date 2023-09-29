@@ -14,7 +14,7 @@ describe("TodoApp component", function () {
   })
 
   it ("renders quote after clicking initial button", async function(){
-    const {getByText, queryByText, getByClassName, container} = render(<InspirationApp />);
+    const {getByText, container} = render(<InspirationApp />);
     const getQuoteButton = container.querySelector(".InspirationApp-button");
     fireEvent.click(getQuoteButton);
 
@@ -24,8 +24,8 @@ describe("TodoApp component", function () {
     });
   });
 
-  it ("renders quote after clicking initial button multiple times", async function(){
-    const {getByText, queryByText, getByClassName, container} = render(<InspirationApp />);
+  it ("renders quote after clicking button multiple times", async function(){
+    const {getByText, container} = render(<InspirationApp />);
     const getQuoteButton = container.querySelector(".InspirationApp-button");
     fireEvent.click(getQuoteButton);
     fireEvent.click(getQuoteButton);

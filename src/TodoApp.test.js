@@ -43,7 +43,11 @@ describe("TodoApp component", function () {
   });
 
   it("adds a todo on form submit", function () {
-    const { getByLabelText, queryByText, container, queryAllByText } = render(<TodoApp />);
+    const {
+      getByLabelText,
+      queryByText,
+      container,
+      queryAllByText } = render(<TodoApp />);
 
     const titleInput = container.querySelector("#newTodo-title");
     const descInput = container.querySelector("#newTodo-description");
@@ -60,7 +64,11 @@ describe("TodoApp component", function () {
   });
 
   it("edits a todo on form", function () {
-    const { getByLabelText, queryByText, container, queryAllByText, getAllByLabelText } = render(<TodoApp initialTodos={testTodos}/>);
+    const {
+      queryByText,
+      container,
+      queryAllByText,
+      getAllByLabelText } = render(<TodoApp initialTodos={testTodos} />);
 
     fireEvent.click(container.querySelector(".EditableTodo-toggle"));
 
@@ -79,7 +87,10 @@ describe("TodoApp component", function () {
   });
 
   it("editing a todo to make it a top priority works", function () {
-    const { getByLabelText, queryByText, container, queryAllByText, getAllByLabelText } = render(<TodoApp initialTodos={testTodos}/>);
+    const {
+      container,
+      queryAllByText,
+      getAllByLabelText } = render(<TodoApp initialTodos={testTodos} />);
 
     fireEvent.click(container.querySelector(".EditableTodo-toggle"));
 
