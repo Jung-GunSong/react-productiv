@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditableTodo component renders as expected by snapshot 1`] = `
+<div>
+  <div
+    class="EditableTodo"
+  >
+    <div
+      class="mb-3"
+    >
+      <div
+        class="float-end text-sm-end"
+      >
+        <button
+          class="EditableTodo-toggle btn-link btn btn-sm"
+        >
+          Edit
+        </button>
+        <button
+          class="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+        >
+          Del
+        </button>
+      </div>
+      <div
+        class="Todo"
+      >
+        <div>
+          <b>
+            test1
+          </b>
+           
+          <small>
+            priority: 
+            2
+          </small>
+        </div>
+        <div>
+          <small>
+            testing1
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

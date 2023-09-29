@@ -41,6 +41,7 @@ function TodoForm({ initialFormData = defaultFormData, handleSave }) {
 
       <div className="mb-3">
         <input
+          required
           id="newTodo-title"
           name="title"
           className="form-control"

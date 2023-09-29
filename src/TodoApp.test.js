@@ -18,7 +18,7 @@ const testTodos = [{
   id: 3,
   title: "test3",
   description: "still testing....",
-  priority: 3,
+  priority: 2,
 }];
 
 describe("TodoApp component", function () {
@@ -57,6 +57,44 @@ describe("TodoApp component", function () {
 
     expect(queryAllByText("testTitle")[0]).toBeInTheDocument();
     expect(queryAllByText("testDesc")[0]).toBeInTheDocument();
+  });
+
+  it("edits a todo on form", function () {
+    const { getByLabelText, queryByText, container, queryAllByText, getAllByLabelText } = render(<TodoApp initialTodos={testTodos}/>);
+
+    fireEvent.click(container.querySelector(".EditableTodo-toggle"));
+
+    const titleInput = container.querySelector("#newTodo-title");
+    const descInput = container.querySelector("#newTodo-description");
+    const priorityInput = getAllByLabelText("Priority:")[0];
+    const submitBtn = queryAllByText("Gø!")[0];
+
+    fireEvent.change(titleInput, { target: { value: "testTitle" } });
+    fireEvent.change(descInput, { target: { value: "testDesc" } });
+    fireEvent.change(priorityInput, { target: { value: 2 } });
+    fireEvent.click(submitBtn);
+
+    expect(queryByText("testTitle")).toBeInTheDocument();
+    expect(queryByText("testDesc")).toBeInTheDocument();
+  });
+
+  it("editing a todo to make it a top priority works", function () {
+    const { getByLabelText, queryByText, container, queryAllByText, getAllByLabelText } = render(<TodoApp initialTodos={testTodos}/>);
+
+    fireEvent.click(container.querySelector(".EditableTodo-toggle"));
+
+    const titleInput = container.querySelector("#newTodo-title");
+    const descInput = container.querySelector("#newTodo-description");
+    const priorityInput = getAllByLabelText("Priority:")[0];
+    const submitBtn = queryAllByText("Gø!")[0];
+
+    fireEvent.change(titleInput, { target: { value: "testTitle" } });
+    fireEvent.change(descInput, { target: { value: "testDesc" } });
+    fireEvent.change(priorityInput, { target: { value: 1 } });
+    fireEvent.click(submitBtn);
+
+    expect(queryAllByText("testTitle").length).toEqual(2);
+    expect(queryAllByText("testDesc").length).toEqual(2);
   });
 
   it("deletes a todo on clicking delete button", function () {

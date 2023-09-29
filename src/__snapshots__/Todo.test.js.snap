@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo component renders as expected by snapshot 1`] = `
+<div>
+  <div
+    class="Todo"
+  >
+    <div>
+      <b>
+        test1
+      </b>
+       
+      <small>
+        priority: 
+        2
+      </small>
+    </div>
+    <div>
+      <small>
+        testing1
+      </small>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Todo component renders properly with todo 1`] = `
+<div>
+  <div
+    class="Todo"
+  >
+    <div>
+      <b>
+        test1
+      </b>
+       
+      <small>
+        priority: 
+        2
+      </small>
+    </div>
+    <div>
+      <small>
+        testing1
+      </small>
+    </div>
+  </div>
+</div>
+`;

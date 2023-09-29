@@ -124,7 +124,7 @@ exports[`TodoApp component matches snapshot 1`] = `
                    
                   <small>
                     priority: 
-                    3
+                    2
                   </small>
                 </div>
                 <div>
@@ -184,6 +184,7 @@ exports[`TodoApp component matches snapshot 1`] = `
                 id="newTodo-title"
                 name="title"
                 placeholder="Title"
+                required=""
                 value=""
               />
             </div>
